@@ -48,12 +48,12 @@ pipeline {
     }
     stage('Deploy vote image') {
       steps {
-        sh "kubectl set image deployment/vote result=harbor-1.nubeliu.com/teco/vote:kube${BUILD_NUMBER} -n vote"
+        sh "kubectl set image deployment/vote vote=harbor-1.nubeliu.com/teco/vote:kube${BUILD_NUMBER} -n vote"
       }
     }
     stage('Deploy worker image') {
       steps {
-        sh "kubectl set image deployment/result result=harbor-1.nubeliu.com/teco/worker:kube${BUILD_NUMBER} -n vote"
+        sh "kubectl set image deployment/result worker=harbor-1.nubeliu.com/teco/worker:kube${BUILD_NUMBER} -n vote"
       }
     }
   }
