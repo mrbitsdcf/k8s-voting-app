@@ -22,21 +22,21 @@ pipeline {
     }
     stage('Push result image') {
       steps {
-        withDockerRegistry(credentialsId: 'Harbor-1', url:'harbor-1.nubeliu.com') {
+        withDockerRegistry(credentialsId: 'Harbor-1', url:'https://harbor-1.nubeliu.com') {
           sh 'docker push harbor-1.nubeliu.com/teco/result'
         }
       }
     }
     stage('Push vote image') {
       steps {
-        withDockerRegistry(credentialsId: 'Harbor-1', url:'harbor-1.nubeliu.com') {
+        withDockerRegistry(credentialsId: 'Harbor-1', url:'https://harbor-1.nubeliu.com') {
           sh 'docker push harbor-1.nubeliu.com/teco/vote'
         }
       }
     }
     stage('Push worker image') {
       steps {
-        withDockerRegistry(credentialsId: 'Harbor-1', url:'harbor-1.nubeliu.com') {
+        withDockerRegistry(credentialsId: 'Harbor-1', url:'https://harbor-1.nubeliu.com') {
           sh 'docker push harbor-1.nubeliu.com/teco/worker'
         }
       }
