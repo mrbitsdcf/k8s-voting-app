@@ -21,9 +21,6 @@ pipeline {
       }
     }
     stage('Push result image') {
-      when {
-        branch 'master'
-      }
       steps {
         withDockerRegistry(credentialsId: 'Harbor-1', url:'') {
           sh 'docker push harbor-1.nubeliu.com/teco/result'
@@ -31,9 +28,6 @@ pipeline {
       }
     }
     stage('Push vote image') {
-      when {
-        branch 'master'
-      }
       steps {
         withDockerRegistry(credentialsId: 'Harbor-1', url:'') {
           sh 'docker push harbor-1.nubeliu.com/teco/vote'
@@ -41,9 +35,6 @@ pipeline {
       }
     }
     stage('Push worker image') {
-      when {
-        branch 'master'
-      }
       steps {
         withDockerRegistry(credentialsId: 'Harbor-1', url:'') {
           sh 'docker push harbor-1.nubeliu.com/teco/worker'
