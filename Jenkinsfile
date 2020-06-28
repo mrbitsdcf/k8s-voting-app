@@ -43,7 +43,7 @@ pipeline {
     }
     stage('Deploy result image') {
       steps {
-        sh "kubectl set image deployment/result result=push harbor-1.nubeliu.com/teco/worker:kube${BUILD_NUMBER}"
+        sh "kubectl set image deployment/result result=harbor-1.nubeliu.com/teco/worker:kube${BUILD_NUMBER} -n vote"
       }
     }
   }
