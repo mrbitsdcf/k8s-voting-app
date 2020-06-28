@@ -7,17 +7,17 @@ pipeline {
   stages {
     stage('Build result') {
       steps {
-        sh 'docker build -t dockersamples/result ./result'
+        sh 'docker build -t harbor-1.nubeliu.com/teco/result ./result'
       }
-    } 
+    }
     stage('Build vote') {
       steps {
-        sh 'docker build -t dockersamples/vote ./vote'
+        sh 'docker build -t harbor-1.nubeliu.com/teco/vote ./vote'
       }
     }
     stage('Build worker') {
       steps {
-        sh 'docker build -t dockersamples/worker ./worker'
+        sh 'docker build -t harbor-1.nubeliu.com/teco/worker ./worker'
       }
     }
     stage('Push result image') {
@@ -25,8 +25,8 @@ pipeline {
         branch 'master'
       }
       steps {
-        withDockerRegistry(credentialsId: 'dockerbuildbot-index.docker.io', url:'') {
-          sh 'docker push dockersamples/result'
+        withDockerRegistry(credentialsId: 'Harbor-1', url:'') {
+          sh 'docker push harbor-1.nubeliu.com/teco/result'
         }
       }
     }
@@ -35,8 +35,8 @@ pipeline {
         branch 'master'
       }
       steps {
-        withDockerRegistry(credentialsId: 'dockerbuildbot-index.docker.io', url:'') {
-          sh 'docker push dockersamples/vote'
+        withDockerRegistry(credentialsId: 'Harbor-1', url:'') {
+          sh 'docker push harbor-1.nubeliu.com/teco/vote'
         }
       }
     }
@@ -45,8 +45,8 @@ pipeline {
         branch 'master'
       }
       steps {
-        withDockerRegistry(credentialsId: 'dockerbuildbot-index.docker.io', url:'') {
-          sh 'docker push dockersamples/worker'
+        withDockerRegistry(credentialsId: 'Harbor-1', url:'') {
+          sh 'docker push harbor-1.nubeliu.com/teco/worker'
         }
       }
     }
